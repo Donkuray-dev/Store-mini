@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Cart from '../user/Cart'
 import DummyLogo from "../../assets/img/Dummy-logo.png"
 import DummyProduct1 from "../../assets/img/Dummy-product-1.png"
 import DummyProduct2 from "../../assets/img/Dummy-product-2.png"
