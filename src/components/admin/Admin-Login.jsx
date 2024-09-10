@@ -1,6 +1,5 @@
 import React from "react";
 import styled from 'styled-components'
-import '../../style/Admin-Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Stepper from '../elements/Stepper'
 import Btn from '../elements/Btn'
