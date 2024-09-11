@@ -1,52 +1,125 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Stepper from "../elements/Stepper";
 import Btn from "../elements/Btn";
 import Input from "../elements/Input";
 import Header from "../elements/Header";
+import { useForm } from "react-hook-form";
+import { useDropzone } from "react-dropzone";
 
 export default function AdminUpload() {
+  const [Img, setImg] = useState(null);
+
+  // form handling
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  // drag and drop handler
+  const onDrop = useCallback((acceptedFiles) => {
+    const file = acceptedFiles[0];
+    if (file) {
+      setImg({ preview: URL.createObjectURL(file), file });
+    }
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: "image/png",
+    multiple: false,
+  });
+
+  const onSubmit = (data) => {
+    if (!Img) {
+      alert("Please upload a brand logo.");
+      return;
+    }
+    console.log("Form Data: ", data);
+    console.log("Uploaded Logo: ", Img.file);
+    window.location.href = "/Admin-Shop-Type";
+  };
+
   return (
     <Wrapper>
       <Header />
       <div className="container">
         <div className="user_login">
           <Stepper />
-          <WrapperInner className="">
-            <h2 className=" text-center">Your Brand Information</h2>
-            <UploadSection>
-              <svg
-                width="36"
-                height="36"
-                viewBox="0 0 36 36"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M29.025 15.06C28.5211 12.5066 27.1464 10.2073 25.1356 8.55487C23.1248 6.90245 20.6027 5.99941 18 6C13.665 6 9.9 8.46 8.025 12.06C5.82035 12.2982 3.78151 13.3428 2.30023 14.993C0.818957 16.6432 -0.000257553 18.7825 6.07391e-08 21C6.07391e-08 25.965 4.035 30 9 30H28.5C32.64 30 36 26.64 36 22.5C36 18.54 32.925 15.33 29.025 15.06ZM21 19.5V25.5H15V19.5H10.5L18 12L25.5 19.5H21Z"
-                  fill="#2563EB"
-                />
-              </svg>
-              <UploadTitle className=" m-0 fw-medium">
-                Upload Your Brand Logo
-              </UploadTitle>
-              <UploadLimts className="">
-                PNG only 150px X 50px (ratio 3:1)
-              </UploadLimts>
+          <WrapperInner>
+            <h2 className="text-center">Your Brand Information</h2>
+            <UploadSection {...getRootProps()}>
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <p>Drop the logo here...</p>
+              ) : (
+                <div>
+                  {Img ? (
+                    <img
+                      src={Img.preview}
+                      alt="Brand Logo Preview"
+                      style={{ width: "150px", height: "50px" }}
+                    />
+                  ) : (
+                    <div>
+                      <svg
+                        width="36"
+                        height="36"
+                        viewBox="0 0 36 36"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M29.025 15.06C28.5211 12.5066 27.1464 10.2073 25.1356 8.55487C23.1248 6.90245 20.6027 5.99941 18 6C13.665 6 9.9 8.46 8.025 12.06C5.82035 12.2982 3.78151 13.3428 2.30023 14.993C0.818957 16.6432 -0.000257553 18.7825 6.07391e-08 21C6.07391e-08 25.965 4.035 30 9 30H28.5C32.64 30 36 26.64 36 22.5C36 18.54 32.925 15.33 29.025 15.06ZM21 19.5V25.5H15V19.5H10.5L18 12L25.5 19.5H21Z"
+                          fill="#2563EB"
+                        />
+                      </svg>
+                      <UploadTitle>Upload Your Brand Logo</UploadTitle>
+                      <UploadLimts>
+                        PNG only 150px X 50px (ratio 3:1)
+                      </UploadLimts>
+                    </div>
+                  )}
+                </div>
+              )}
             </UploadSection>
-            <UploadWarning>Brand Logo Cannot be empty</UploadWarning>
-            <Input title="Brand Name" type="text" />
-            <Input title="Tag Line" type="text" />
-            <Input title="Location" type="text" />
-            <BtnSection>
-              <a href="/Admin-Contect">
-                <Btn title="Back" />
-              </a>
-              <a href="/Admin-Shop-Type">
-                <Btn title="Next" />
-              </a>
-            </BtnSection>
+            {!Img && <UploadWarning>Brand Logo Cannot be empty</UploadWarning>}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Input
+                title="Brand Name"
+                type="text"
+                register={register("Brandname", {
+                  required: "BrandName is required",
+                })}
+                error={errors.Brandname}
+              />
+              <Input
+                title="Tag Line"
+                type="text"
+                register={register("Tagline", {
+                  required: "TagLine is required",
+                })}
+                error={errors.Tagline}
+              />
+              <Input
+                title="Location"
+                type="text"
+                register={register("Location", {
+                  required: "Location is required",
+                })}
+                error={errors.Location}
+              />
+              <BtnSection>
+                <a href="/Admin-Contect">
+                  <Btn title="Back" />
+                </a>
+                <a href="">
+                  <Btn title="Next" />
+                </a>
+              </BtnSection>
+            </form>
           </WrapperInner>
         </div>
       </div>

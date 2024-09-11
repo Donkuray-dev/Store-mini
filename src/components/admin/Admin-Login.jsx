@@ -18,7 +18,6 @@ export default function AdminLogin() {
 
   const onSubmit = (data) => {
     console.log(data);
-    // Handle form submission logic here
     window.location.href = "/Admin-Contect";
   };
 
@@ -59,7 +58,7 @@ export default function AdminLogin() {
                 <Btn title="Continue" />
               </a>
               <p className="common_margin text-center fw-semibold">
-                Already registered?{" "}
+                Already registered?
                 <a href="" className="green text-decoration-none">
                   Click Here
                 </a>
