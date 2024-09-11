@@ -76,3 +76,4 @@ const ProductImg = styled.div`
 const ProductDetails = styled.div`
 
 `
+const ProductTitle = styled.p``

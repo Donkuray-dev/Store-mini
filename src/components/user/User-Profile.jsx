@@ -9,7 +9,8 @@ import DummyProduct3 from "../../assets/img/Dummy-product-3.png"
 import DummyProduct4 from "../../assets/img/Dummy-product-4.png"
 import DummyProduct5 from "../../assets/img/Dummy-product-5.png"
 import DummyProduct6 from "../../assets/img/Dummy-product-6.png"
-
+import { useState } from "react";
+import Imgsaved from "../elements/Img-saved"
 
 export default function UserProfile() {
   const [search, setsearch] = useState("");
@@ -207,7 +208,7 @@ export default function UserProfile() {
                   <CardImage src={product.image} />
                   <CardLikeBtn>
 
-                   <Imgsaved/>
+                   <Imgsaved />
                   </CardLikeBtn>
                 </CardImageSection>
                 <CardDetails>
