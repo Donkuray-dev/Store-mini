@@ -1,4 +1,3 @@
-import DummyProduct2 from "../../assets/img/Dummy-product-2.png";
 import React from "react";
 import styled from "styled-components";
 import "../../style/Admin-Login.css";
@@ -6,11 +5,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Stepper from "../elements/Stepper";
 import Btn from "../elements/Btn";
 import Input from "../elements/Input";
+import styled from "styled-components";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Stepper from "../elements/Stepper";
+import Btn from "../elements/Btn";
+import Input from "../elements/Input";
+
 import Header from "../elements/Header";
 
-
 export default function AdminUpload() {
-
   return (
     <Wrapper>
       <Header />

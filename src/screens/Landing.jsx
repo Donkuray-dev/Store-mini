@@ -7,6 +7,8 @@ import AdminProfile from '../components/admin/Admin-Profile'
 import AdminUploadProduct from '../components/admin/Admin-Upload-Product';
 import AdminUrl from '../components/admin/Admin-Url';
 import UserProfile from '../components/user/User-Profile';
+import Cart from '../components/user/Cart'
+import ProductProfile from '../components/user/Product-Profile'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route,BrowserRouter, Routes } from 'react-router-dom';
 
@@ -25,6 +27,8 @@ function Landing() {
                     <Route path='/Admin-Upload-Product' element={<AdminUploadProduct/>}/>
                     <Route path='/Admin-Url' element={<AdminUrl/>}/>
                     <Route path='/' element={<UserProfile/>}/>
+                    <Route path='/Cart' element={<Cart/>}/>
+                    <Route path='/Product-Profile' element={<ProductProfile/>}/>
                 </Routes>
             </BrowserRouter>
         </>

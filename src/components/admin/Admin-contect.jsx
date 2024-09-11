@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import "../../style/Admin-Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Stepper from "../elements/Stepper";
 import Btn from "../elements/Btn";
 import Input from "../elements/Input";
+import React from "react";
+import styled from "styled-components";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Stepper from "../elements/Stepper";
+import Btn from "../elements/Btn";
+import Input from "../elements/Input";
 import Header from "../elements/Header";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
   return (
@@ -21,14 +24,14 @@ export default function AdminLogin() {
             <h2 className=" text-center">User Information</h2>
             <Input type="text" title="UserName" />
             <Input type="number" title="Mobile Number" />
-            <Input type="number" title="Whatsapp Number"  />
+            <Input type="number" title="Whatsapp Number" />
 
             <BtnSection>
               <a href="/Admin-Login">
                 <Btn title="Back" />
               </a>
               <a href="/Admin-Upload">
-              <Btn title="Next"  />
+                <Btn title="Next" />
               </a>
             </BtnSection>
           </WrapperInner>

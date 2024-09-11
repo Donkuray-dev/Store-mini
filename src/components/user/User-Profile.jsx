@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import "bootstrap/dist/css/bootstrap.min.css";
-import DummyLogo from "../../assets/img/Dummy-logo.png";
-import DummyProduct1 from "../../assets/img/Dummy-product-1.png";
-import DummyProduct2 from "../../assets/img/Dummy-product-2.png";
-import DummyProduct3 from "../../assets/img/Dummy-product-3.png";
-import DummyProduct4 from "../../assets/img/Dummy-product-4.png";
-import DummyProduct5 from "../../assets/img/Dummy-product-5.png";
-import DummyProduct6 from "../../assets/img/Dummy-product-6.png";
-import { useState } from "react";
-import Imgsaved from "../elements/Img-saved";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Cart from '../user/Cart'
+import DummyLogo from "../../assets/img/Dummy-logo.png"
+import DummyProduct1 from "../../assets/img/Dummy-product-1.png"
+import DummyProduct2 from "../../assets/img/Dummy-product-2.png"
+import DummyProduct3 from "../../assets/img/Dummy-product-3.png"
+import DummyProduct4 from "../../assets/img/Dummy-product-4.png"
+import DummyProduct5 from "../../assets/img/Dummy-product-5.png"
+import DummyProduct6 from "../../assets/img/Dummy-product-6.png"
+
 
 export default function UserProfile() {
   const [search, setsearch] = useState("");
