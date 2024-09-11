@@ -55,7 +55,7 @@ const Title = styled.div`
     display: flex;
     align-items: center;
     column-gap: 319px;
-    margin: 42px 0 0 ;
+    padding: 42px 0 0 ;
 `
 const CartList = styled.div`
 
