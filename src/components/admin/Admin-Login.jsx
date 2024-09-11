@@ -30,6 +30,7 @@ export default function AdminLogin() {
           <WrapperInner className="">
             <h2 className="text-center">User Information</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
+              
               <Input
                 title="Email"
                 type="email"
@@ -63,7 +64,7 @@ export default function AdminLogin() {
                   Click Here
                 </a>
               </p>
-            </form>
+            </form>s
           </WrapperInner>
         </div>
       </div>

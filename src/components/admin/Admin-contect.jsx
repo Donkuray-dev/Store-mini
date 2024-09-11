@@ -5,8 +5,15 @@ import Btn from "../elements/Btn";
 import Input from "../elements/Input";
 import React from "react";
 import Header from "../elements/Header";
+import { useForm } from "react-hook-form";
 
 export default function AdminLogin() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   return (
     <Wrapper>
       <Header />
@@ -14,18 +21,53 @@ export default function AdminLogin() {
         <div className="user_login">
           <Stepper />
 
-          <WrapperInner>
+          <WrapperInner onSubmit={handleSubmit((data)=> {
+          console.log(data);
+          window.location.href = "/Admin-Upload"
+          })}>
             <h2 className=" text-center">User Information</h2>
-            <Input type="text" title="UserName" />
-            <Input type="number" title="Mobile Number" />
-            <Input type="number" title="Whatsapp Number" />
+            <Input
+              type="text"
+              title="UserName"
+              register={register("text", { required: "Username must be here" })}
+              error={errors.text}
+            />
+
+            <Input
+              type="number"
+              title="Mobile Number"
+              register={register("number", {
+                required: "mobile number is requires",
+                maxLength: {
+                  value: 10,
+                  message: "number should be atleat 10 digit",
+                },
+                minLength: {
+                  value: 10,
+                  message: "number should be atleat 10 digit",
+                },
+              })}
+              error={errors.number}
+            />
+            <Input
+              type="number"
+              title="Whatsapp Number"
+              register={register("wNum", {
+                required: "Whatsapp number required",
+                maxLength: {
+                  value: 10,
+                  message: "number should be atleat 10 digit",
+                },
+              })}
+              error={errors.wNum}
+            />
 
             <BtnSection>
               <a href="/Admin-Login">
                 <Btn title="Back" />
               </a>
               <a href="/Admin-Upload">
-                <Btn title="Next" />
+                <Btn title="Next" type="submit" />
               </a>
             </BtnSection>
           </WrapperInner>
@@ -36,7 +78,8 @@ export default function AdminLogin() {
 }
 
 const Wrapper = styled.div``;
-const WrapperInner = styled.div`
+
+const WrapperInner = styled.form`
   width: 100%;
   max-width: 435px;
   padding: 25px;
@@ -45,6 +88,7 @@ const WrapperInner = styled.div`
   border-radius: 8px;
   box-shadow: 0px 0px 2px gray;
 `;
+
 const BtnSection = styled.div`
   display: flex;
   gap: 20px;
