@@ -214,7 +214,7 @@ export default function UserProfile() {
                 <CardDetails>
                   <p className="font p m-1 fw-semibold">{product.name}</p>
                   <ProductDetail>
-                    <p className="font fw-bold">₹{product.price}/-</p>
+                    <p className="font fw-bold">₹{product.price}</p>
                     <ProductPriceBtn className="font">
                       Add To Cart
                     </ProductPriceBtn>
@@ -236,13 +236,18 @@ const WrapperInner = styled.div`
   max-width: 893px;
   margin: 0 auto;
   background-color: #f5f7f8;
-  height: 100vh;
+  height: fit-content;
+
+  @media (max-width:767px){
+    padding: 0px 11px;
+  }
 `;
 const UserInfo = styled.div`
   padding: 47px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
+
 `;
 const BaseInfo = styled.div`
   display: flex;
@@ -250,12 +255,21 @@ const BaseInfo = styled.div`
   column-gap: 24px;
   width: 100%;
   max-width: 375px;
+
+  @media (max-width:767px){
+    display: grid;
+    row-gap:15px;
+  }
 `;
 const ProfileInfo = styled.div`
   text-align: right;
   display: flex;
   align-items: center;
   column-gap: 7px;
+
+  @media (max-width:767px){
+    display: none;
+  }
 `;
 const CartBtn = styled.button`
   border: none;
@@ -282,6 +296,11 @@ const Search = styled.div`
   padding: 0 13px;
   display: flex;
   column-gap: 36px;
+
+  @media (max-width:767px){
+    column-gap: 0px;
+    padding: 0 5px;
+  }
 `;
 const SearchSection = styled.div`
   background-color: #ebebeb;
@@ -305,17 +324,37 @@ const CardSection = styled.div`
   row-gap: 26px;
   display: flex;
   flex-wrap: wrap;
+
+   @media (max-width:768px){
+    justify-content: center;
+    padding: 0px;
+  }
+
 `;
 const Card = styled.div`
   width: 100%;
   max-width: 214px;
+
+  @media (max-width:767px){
+    max-width: 107px;
+  }
 `;
 const CardImageSection = styled.div`
   width: 214px;
   height: 214px;
+
+  @media (max-width:767px){
+    width: 107px;
+    height: 107px;
+  }
 `;
 const CardImage = styled.img`
   position: absolute;
+    
+  @media (max-width:767px){
+    width: 107px;
+    height: 107px;
+  }
 `;
 const CardLikeBtn = styled.button`
   position: relative;
@@ -332,6 +371,10 @@ const ProductDetail = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width:767px){
+    display: grid;
+  } 
 `;
 const ProductPriceBtn = styled.button`
   border: none;
