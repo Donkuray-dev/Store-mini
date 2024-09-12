@@ -34,7 +34,7 @@ export default function AdminLogin() {
       <Header />
       <div className="container">
         <div className="user_login">
-          <Stepper />
+          <Stepper index={1}/>
 
           <WrapperInner onSubmit={handleSubmit(onSubmit)}>
             <h2 className="text-center">User Information</h2>

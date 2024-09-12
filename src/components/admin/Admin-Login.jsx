@@ -26,7 +26,7 @@ export default function AdminLogin() {
       <Header />
       <div className="container">
         <div className="user_login">
-          <Stepper />
+          <Stepper index={0} />
           <WrapperInner className="">
             <h2 className="text-center">User Information</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -64,7 +64,7 @@ export default function AdminLogin() {
                   Click Here
                 </a>
               </p>
-            </form>s
+            </form>
           </WrapperInner>
         </div>
       </div>
