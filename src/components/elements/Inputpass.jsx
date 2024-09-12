@@ -75,5 +75,5 @@ const InputContent = styled.div`
 
 const ErrorMessage = styled.p`
   color: red;
-  font-size: 12px;
+  font-size: 14px;
 `;

@@ -17,7 +17,7 @@ export default function Input({ title, type, register, error }) {
         />
       </InputContent>
       {error && <ErrorMessage>{error.message}</ErrorMessage>}
-    </Wrapper>
+    </Wrapper> 
   );
 }
 
@@ -46,5 +46,5 @@ const InputContent = styled.div`
 
 const ErrorMessage = styled.p`
   color: red;
-  font-size: 12px;
+  font-size: 14px;
 `;

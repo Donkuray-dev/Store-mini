@@ -6,6 +6,7 @@ import Input from "../elements/Input";
 import React from "react";
 import Header from "../elements/Header";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
   const {
@@ -14,6 +15,20 @@ export default function AdminLogin() {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+  // Function to handle form submission
+  const onSubmit = (data) => {
+    console.log(data);
+    // Redirect to Admin-Upload if the form is valid
+    navigate("/Admin-Upload");
+  };
+
+  // Function to handle back navigation
+  const handleBack = (data) => {
+    console.log(data);
+    navigate("/Admin-Login");
+  };
+
   return (
     <Wrapper>
       <Header />
@@ -21,11 +36,8 @@ export default function AdminLogin() {
         <div className="user_login">
           <Stepper />
 
-          <WrapperInner onSubmit={handleSubmit((data)=> {
-          console.log(data);
-          window.location.href = "/Admin-Upload"
-          })}>
-            <h2 className=" text-center">User Information</h2>
+          <WrapperInner onSubmit={handleSubmit(onSubmit)}>
+            <h2 className="text-center">User Information</h2>
             <Input
               type="text"
               title="UserName"
@@ -37,14 +49,14 @@ export default function AdminLogin() {
               type="number"
               title="Mobile Number"
               register={register("number", {
-                required: "mobile number is requires",
+                required: "Mobile number is required",
                 maxLength: {
                   value: 10,
-                  message: "number should be atleat 10 digit",
+                  message: "Number should be exactly 10 digits",
                 },
                 minLength: {
                   value: 10,
-                  message: "number should be atleat 10 digit",
+                  message: "Number should be exactly 10 digits",
                 },
               })}
               error={errors.number}
@@ -53,22 +65,23 @@ export default function AdminLogin() {
               type="number"
               title="Whatsapp Number"
               register={register("wNum", {
-                required: "Whatsapp number required",
+                required: "Whatsapp number is required",
                 maxLength: {
                   value: 10,
-                  message: "number should be atleat 10 digit",
+                  message: "Number should be exactly 10 digits",
                 },
               })}
               error={errors.wNum}
             />
 
             <BtnSection>
-              <a href="/Admin-Login">
-                <Btn title="Back" />
-              </a>
-              <a href="/Admin-Upload">
-                <Btn title="Next" type="submit" />
-              </a>
+              <Btn title="Back" type="button" onClick={handleBack}>
+                Back
+              </Btn>
+
+              <Btn title="Next" type="submit">
+                Next
+              </Btn>
             </BtnSection>
           </WrapperInner>
         </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function Btn({title,to}) {
+export default function Btn({title,onClick}) {
 
     return(
         
-            <Wrapper className=' rounded-pill w-100 border-0 text-light' >
+            <Wrapper className=' rounded-pill w-100 border-0 text-light'onClick={onClick} >
                 {title}
             </Wrapper>
     );     

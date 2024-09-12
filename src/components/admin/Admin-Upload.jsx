@@ -21,6 +21,7 @@ export default function AdminUpload() {
   // drag and drop handler
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
+    
     if (file) {
       setImg({ preview: URL.createObjectURL(file), file });
     }
