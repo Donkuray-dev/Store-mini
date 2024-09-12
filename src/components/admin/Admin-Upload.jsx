@@ -7,6 +7,7 @@ import Input from "../elements/Input";
 import Header from "../elements/Header";
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminUpload() {
   const [Img, setImg] = useState(null);
@@ -55,6 +56,7 @@ export default function AdminUpload() {
     multiple: false,
   });
 
+  const Navigate=useNavigate()
   const onSubmit = (data) => {
     if (!Img) {
       alert("Please upload a brand logo.");
@@ -62,9 +64,12 @@ export default function AdminUpload() {
     }
     console.log("Form Data: ", data);
     console.log("Uploaded Logo: ", Img.file);
-    window.location.href = "/Admin-Shop-Type";
+    Navigate("/Admin-Shop-Type")
   };
-
+const handaleBack=(data)=>{
+  console.log(data)
+  Navigate("/Admin-Contect")
+}
   return (
     <Wrapper>
       <Header />
@@ -134,13 +139,10 @@ export default function AdminUpload() {
                 })}
                 error={errors.Location}
               />
-              <BtnSection>
-                <a href="/Admin-Contect">
-                  <Btn title="Back" />
-                </a>
-                <a href="">
-                  <Btn title="Next" />
-                </a>
+              <BtnSection>                
+                  <Btn title="Back" type="button" onClick={handaleBack}/>            
+                
+                  <Btn title="Next" type="submit"/>                
               </BtnSection>
             </form>
           </WrapperInner>
