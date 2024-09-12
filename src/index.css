@@ -84,3 +84,11 @@ a{
 .p {
   font-size: 14px;
 }
+.small{
+  font-size: 11px;
+  line-height: 15px;
+}
+.big{
+  font-size: 17px;
+  line-height: 21px;
+}
