@@ -15,7 +15,7 @@ export default function  AdminShopType() {
             <Header/>
             <div className="container">
                 <div className="user_login">
-                    <Stepper/>    
+                    <Stepper index={3}/>    
                     <WrapperInner className="">
                         <h2 className=" text-center">Your Brand Information</h2>
                         <Domain title={"Sub Domain"}/>
