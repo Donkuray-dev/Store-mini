@@ -2,29 +2,45 @@ import React from "react";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CartItem from "../elements/CartItem";
-import CartItem1 from '../../assets/img/CartItem1.png'
-import CartItem2 from '../../assets/img/CartItem2.png'
-import CartItem3 from '../../assets/img/CartItem3.png'
-import CartItem4 from '../../assets/img/CartItem4.png'
-
-
+import { useCart } from "react-use-cart";
 
 export default function AdminProfile() {
+ 
+    const {
+        isEmpty,
+        totalUniqueItems,
+        items,
+
+      } = useCart();
+    
+      if (isEmpty) return <p>Your cart is empty</p>;
+
         return(
             <Wrapper>
                 <div className="container">
                     <WrapperInner>
-                        <Title>
+                        <Title >
                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M10.6668 10.6666L6.27627 15.0572C5.75557 15.5779 5.75557 16.4221 6.27627 16.9428L10.6668 21.3333M6.66679 16L25.3335 16" stroke="#171717" stroke-width="2" stroke-linecap="round"/>
                                 </svg>
-                            <h3 className=" h2">Cart</h3>
+                            <h3 className=" h2">Cart ({totalUniqueItems})</h3>
                         </Title>
                         <CartList>
-                            <CartItem img={CartItem1} ItemName={"Pink Champagne Markess line Soon"} />
+                            {items.map((item)=>(
+                                <CartItem
+                                key={item.id}
+                                img={item.image}
+                                item={item}
+                                ItemName={item.name}
+                                quantity={item.quantity}
+                                />
+                               )) }
+
+                               
+                            {/* <CartItem img={CartItem1} ItemName={"Pink Champagne Markess line Soon"} />
                             <CartItem img={CartItem2} ItemName={"Omega Men’s Watch"} />
                             <CartItem img={CartItem3} ItemName={"Jaksan movie outfit"} />
-                            <CartItem img={CartItem4} ItemName={"Pink Champagne Markess line Soon"} />
+                            <CartItem img={CartItem4} ItemName={"Pink Champagne Markess line Soon"} /> */}
                         </CartList>
                         <WhatsappBtn>
                             Continue to 
@@ -33,6 +49,12 @@ export default function AdminProfile() {
                             </svg> 
                         </WhatsappBtn>
                     </WrapperInner>
+
+
+
+
+
+
                 </div>
             </Wrapper>
         )

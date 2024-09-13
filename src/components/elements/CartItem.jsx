@@ -2,12 +2,29 @@ import React from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useCart } from "react-use-cart";
 
-
-export default function CartItem({img,ItemName}) {
+export default function CartItem({img,ItemName, item}) {
 
     const [count, setCount] = useState(0);
-
+    const {
+        updateItemQuantity,
+        removeItem,
+      } = useCart();
+    
+      const handleSubtract = () => {
+        setCount(count - 1);
+        updateItemQuantity(item.id, count - 1);
+      };
+    
+      const handleAdd = () => {
+        setCount(count + 1);
+        updateItemQuantity(item.id, count + 1);
+      };
+    
+      const handleDelete = ()=>{
+        removeItem(item.id)
+      }
 
     return(
         <Wrapper>
@@ -18,18 +35,18 @@ export default function CartItem({img,ItemName}) {
                         <p className="item_name">{ItemName}</p>
                     </ItemProfile>
                     <ItemData>
-                        <ItemSubtract  onClick={() => setCount(count - 1)}>
+                        <ItemSubtract  onClick={handleSubtract}>
                             <svg width="10" height="3" viewBox="0 0 9 3" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0.183594 2.38641V0.367188H8.37112V2.38641H0.183594Z" fill="#171717"/>
                             </svg>
                         </ItemSubtract>
                         <p className="item_count">{count}</p>
-                        <ItemAdd onClick={() => setCount(count + 1)}>
+                        <ItemAdd  onClick={handleAdd}>
                             <svg width="12" height="12" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.75762 12.1174V7.3045H0V5.31294H4.75762V0.5H6.85982V5.31294H11.6174V7.3045H6.85982V12.1174H4.75762Z" fill="#F5F7F8"/>
                             </svg>
                         </ItemAdd>
-                        <ItemDelete>
+                        <ItemDelete onClick={handleDelete} >
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M14.6811 7.28802C14.6811 7.28802 14.2738 12.3393 14.0376 14.467C13.9251 15.4833 13.2973 16.0788 12.2691 16.0975C10.3123 16.1328 8.35334 16.135 6.39734 16.0938C5.40809 16.0735 4.79084 15.4705 4.68059 14.4723C4.44284 12.3258 4.03784 7.28802 4.03784 7.28802" stroke="#A0A0A0" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M15.7185 4.86665H3" stroke="#A0A0A0" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"/>

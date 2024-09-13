@@ -65,10 +65,6 @@ export default function AdminUpload() {
     Navigate("/Admin-Shop-Type");
   };
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e4bcf8eab765ed146dfcca86cf9042563573c5f0
   return (
     <Wrapper>
       <Header />
