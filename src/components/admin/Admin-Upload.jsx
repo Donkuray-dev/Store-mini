@@ -23,40 +23,35 @@ export default function AdminUpload() {
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file) {
-      const fileSize = file.size;
-      const fileWidth = file.width;
-      const fileHeight = file.height;
-      const ratio = fileWidth / fileHeight;
-  
-      if (fileSize > 1024 * 1024) { // 1MB limit
-        alert("Image size exceeds 1MB");
-        return;
-      }
-  
-      if (ratio !== 3) { // 3:1 ratio limit
-        alert("Image ratio must be 3:1");
-        return;
-      }
-  
-      if (file.type !== "image/png") { // PNG only
-        alert("Only PNG images are allowed");
-        return;
-      }
-  
-      setImg({ preview: URL.createObjectURL(file), file });
+      const fileSize = file.size / (1024 * 1024); // convert file size to MB
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+
+      img.onload = () => {
+        const fileWidth = img.width;
+        const fileHeight = img.height;
+        const ratio = fileWidth / fileHeight;
+
+        // Check file size limit (3MB)
+        if (fileSize > 3) {
+          alert("Image size exceeds 3MB");
+          return;
+        }
+        if (ratio == 0) {
+          alert("Image ratio must be 3:1");
+          return;
+        }
+        setImg({ preview: URL.createObjectURL(file), file });
+      };
     }
-  
-
-
   }, []);
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: "image/png",
+    accept: "image/*",
     multiple: false,
   });
 
-  const Navigate=useNavigate()
+  const Navigate = useNavigate();
   const onSubmit = (data) => {
     if (!Img) {
       alert("Please upload a brand logo.");
@@ -64,18 +59,18 @@ export default function AdminUpload() {
     }
     console.log("Form Data: ", data);
     console.log("Uploaded Logo: ", Img.file);
-    Navigate("/Admin-Shop-Type")
+    Navigate("/Admin-Shop-Type");
   };
-const handaleBack=(data)=>{
-  console.log(data)
-  Navigate("/Admin-Contect")
-}
+  const handaleBack = (data) => {
+    console.log(data);
+    Navigate("/Admin-Contect");
+  };
   return (
     <Wrapper>
       <Header />
       <div className="container">
         <div className="user_login">
-          <Stepper index={2}/>
+          <Stepper index={2} />
           <WrapperInner>
             <h2 className="text-center">Your Brand Information</h2>
             <UploadSection {...getRootProps()}>
@@ -85,11 +80,7 @@ const handaleBack=(data)=>{
               ) : (
                 <div>
                   {Img ? (
-                    <img
-                      src={Img.preview}
-                      alt="Brand Logo Preview"
-                      style={{ width: "150px", height: "50px" }}
-                    />
+                    <PreviewImage src={Img.preview} alt="Brand Logo Preview" />
                   ) : (
                     <div>
                       <svg
@@ -139,10 +130,10 @@ const handaleBack=(data)=>{
                 })}
                 error={errors.Location}
               />
-              <BtnSection>                
-                  <Btn title="Back" type="button" onClick={handaleBack}/>            
-                
-                  <Btn title="Next" type="submit"/>                
+              <BtnSection>
+                <Btn title="Back" type="button" onClick={handaleBack} />
+
+                <Btn title="Next" type="submit" />
               </BtnSection>
             </form>
           </WrapperInner>
@@ -162,26 +153,43 @@ const WrapperInner = styled.div`
   border-radius: 8px;
   box-shadow: 0px 0px 2px gray;
 `;
+
 const UploadSection = styled.div`
   text-align: center;
   border: 2px dashed #2563eb;
   border-radius: 8px;
-  padding: 37px 0;
+  height: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+width: 100%;
 `;
+
 const UploadTitle = styled.h3`
   font-size: 18px;
 `;
+
 const UploadLimts = styled.p`
   font-size: 12px;
   color: #1f2937cc;
 `;
+
 const UploadWarning = styled.p`
   font-size: 12px;
   color: #ff0c0c;
   font-weight: 500;
   font-family: "Space Grotesk", sans-serif;
 `;
+
 const BtnSection = styled.div`
   display: flex;
   gap: 20px;
+`;
+
+// Updated styles for the image preview
+const PreviewImage = styled.img`
+  width: 100%;
+  height: 9rem;
+  object-fit: contain;
+  border-radius: 8px;
 `;

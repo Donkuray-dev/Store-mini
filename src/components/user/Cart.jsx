@@ -42,6 +42,7 @@ const Wrapper = styled.div`
 `
 const WrapperInner = styled.div`
     height: 100vh;
+    
     width: 100%;
     max-width: 893px;
     margin: 0 auto;
