@@ -23,26 +23,27 @@ export default function AdminUpload() {
   const onDrop = useCallback((acceptedFiles) => {
     const file = acceptedFiles[0];
     if (file) {
-      const fileSize = file.size / (1024 * 1024); // convert file size to MB
-      const img = new Image();
-      img.src = URL.createObjectURL(file);
-
-      img.onload = () => {
-        const fileWidth = img.width;
-        const fileHeight = img.height;
-        const ratio = fileWidth / fileHeight;
-
-        // Check file size limit (3MB)
-        if (fileSize > 3) {
-          alert("Image size exceeds 3MB");
-          return;
-        }
-        if (ratio == 0) {
-          alert("Image ratio must be 3:1");
-          return;
-        }
-        setImg({ preview: URL.createObjectURL(file), file });
-      };
+      const fileSize = file.size;
+      const fileWidth = file.width;
+      const fileHeight = file.height;
+      const ratio = fileWidth / fileHeight;
+  
+      if (fileSize > 1024 * 1024) { // 1MB limit
+        alert("Image size exceeds 1MB");
+        return;
+      }
+  
+      if (ratio !== 3) { // 3:1 ratio limit
+        alert("Image ratio must be 3:1");
+        return;
+      }
+  
+      if (file.type !== "image/png") { // PNG only
+        alert("Only PNG images are allowed");
+        return;
+      }
+  
+      setImg({ preview: URL.createObjectURL(file), file });
     }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -53,18 +54,18 @@ export default function AdminUpload() {
 
   const Navigate = useNavigate();
   const onSubmit = (data) => {
+    console.log("Form Data: ", data);
+    localStorage.setItem("Admin-upload Data", JSON.stringify(data))
     if (!Img) {
       alert("Please upload a brand logo.");
+   
       return;
     }
-    console.log("Form Data: ", data);
+   
     console.log("Uploaded Logo: ", Img.file);
     Navigate("/Admin-Shop-Type");
   };
-  const handaleBack = (data) => {
-    console.log(data);
-    Navigate("/Admin-Contect");
-  };
+
   return (
     <Wrapper>
       <Header />
