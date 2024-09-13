@@ -25,6 +25,10 @@ export default function AdminProfile() {
                             <CartItem img={CartItem2} ItemName={"Omega Men’s Watch"} />
                             <CartItem img={CartItem3} ItemName={"Jaksan movie outfit"} />
                             <CartItem img={CartItem4} ItemName={"Pink Champagne Markess line Soon"} />
+                            <CartItem img={CartItem1} ItemName={"Pink Champagne Markess line Soon"} />
+                            <CartItem img={CartItem2} ItemName={"Omega Men’s Watch"} />
+                            <CartItem img={CartItem3} ItemName={"Jaksan movie outfit"} />
+                            <CartItem img={CartItem4} ItemName={"Pink Champagne Markess line Soon"} />
                         </CartList>
                         <WhatsappBtn>
                             Continue to 
@@ -42,19 +46,30 @@ const Wrapper = styled.div`
 `
 
 const WrapperInner = styled.div`
-    height: 100vh;
-    
+    height: fit-content;
     width: 100%;
     max-width: 893px;
     margin: 0 auto;
     background: #F5F7F8;
     padding: 42px 60px 0 ;
+
+    @media(max-width:767px){
+        padding: 0 10px;
+    }
 `
 const Title = styled.div`
     color: #000;
     display: flex;
     align-items: center;
     column-gap: 319px;
+
+    @media(max-width:767px){
+        column-gap: 0;
+
+        h3{
+            margin: 0 auto;
+        }
+    }
 `
 const CartList = styled.div`
 `
@@ -68,4 +83,8 @@ const WhatsappBtn = styled.button`
     font-size: 18px;
     column-gap: 6px;
     padding: 15px 96px;
+
+    @media(max-width:767px){
+        padding: 10px 64px;
+    }
 `

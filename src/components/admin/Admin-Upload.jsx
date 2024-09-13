@@ -132,7 +132,7 @@ export default function AdminUpload() {
                 error={errors.Location}
               />
               <BtnSection>
-                <Btn title="Back" type="button" onClick={handaleBack} />
+                <Btn title="Back" type="button" />
 
                 <Btn title="Next" type="submit" />
               </BtnSection>

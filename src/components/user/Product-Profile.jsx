@@ -118,12 +118,10 @@ const Title = styled.div`
     display: flex;
     align-items: center;
     padding: 42px 0 0 ;
-    
+
     p{
         margin: 0 auto;
     }
-
-
 
     @media (max-width:767px){
         padding: 21px 0 0 ;
@@ -168,7 +166,6 @@ const ProductImg = styled.div`
     @media (max-width:767px){
         margin: 0px;
     }
-
     img{
         @media (max-width:767px){
             width: 274px;
@@ -181,7 +178,6 @@ const ProductDetails = styled.div`
         grid-area: c;
         width: 274px; 
     }
-    
     p{
         @media(max-width:767px){
             font-size: 11px;
@@ -193,7 +189,7 @@ const ProductTitle = styled.p`
     font-weight: 600;
     margin: 0;
     line-height: 30px; 
-
+    
     @media (max-width:767px){
         font-size: 18px !important;
     }
@@ -260,7 +256,7 @@ const CardImageSection = styled.div`
     height: 214px;
     
     @media(max-width:767px){
-        width: 107px;
+        width: 107px;   
         height: 107px;
     }
 `

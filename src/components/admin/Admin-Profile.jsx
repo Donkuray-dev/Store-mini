@@ -223,7 +223,11 @@ const WrapperInner = styled.div`
     max-width: 893px;
     margin: 0 auto;
     background-color: #F5F7F8;
-    height: 100vh;
+    height: fit-content;
+
+    @media(max-width:767px){
+        padding: 0 10px;
+    }
 `
 const AdminInfo = styled.div`
     padding: 47px  0 0 ;
@@ -231,15 +235,39 @@ const AdminInfo = styled.div`
     align-items: center;
     justify-content: space-between;
 
+    @media(max-width:767px){
+        display: grid;
+    }
 `
 const BaseInfo = styled.div`
     display: flex;
     align-items: center;
     column-gap: 24px;
     width: 100%;
+
+    @media(max-width:767px){
+
+
+
+        img{
+            width: 70px;
+        }
+        h3{
+            font-size: 20px;
+        }
+        p{
+            font-size: 11px;
+            line-height: 15px;
+        }
+
+    }
 `
 const ProfileInfo = styled.div`
     text-align: right;
+
+    @media(max-width:767px){
+        text-align: left;
+    }
 `
 const EditBtn = styled.button`
     border: none;
@@ -249,9 +277,19 @@ const EditBtn = styled.button`
     border-radius: 50px;
     font-size: 15px;
     margin: 0 0 15px;
-`
+
+    @media(max-width:767px){
+        font-size: 11px;
+        padding: 5px 25px;
+        margin: 15px 0 0;
+    }
+ `
 const StoreLink = styled.a`
     font-size: 17px;
+
+    @media(max-width:767px){
+        margin: 15px 0 0;
+    }
 `
 const CopyBtn = styled.button`
     font-size: 11px;
@@ -279,18 +317,38 @@ const CardSection = styled.div`
     column-gap: 31px;
     row-gap: 26px;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+        justify-content: center;
+        padding: 0px;
+    }
 `
 const Card = styled.div`
     width: 100%;
     max-width: 214px;
+
+    @media (max-width: 767px) {
+        max-width: 107px;
+    }
 `
 const CardImageSection = styled.div`
     width: 214px;
     height: 214px;
+
+    @media (max-width: 767px) {
+        width: 107px;
+        height: 107px;
+    }
 `
 const CardImage = styled.img`
     position: absolute;
+
+    @media (max-width: 767px) {
+        width: 107px;
+        height: 107px;
+    }
 `
 const CardDeleteBtn = styled.button`
     position: relative;
@@ -310,6 +368,10 @@ const ProductDetail = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 767px) {
+        display: grid;
+    }
 `
 const ProductEditBtn = styled.button`
     border: none;

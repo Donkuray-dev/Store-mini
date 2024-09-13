@@ -56,23 +56,53 @@ const ItemProfile = styled.div`
     display: flex;
     align-items: center;
     column-gap: 20px;
+
+    @media(max-width:767px){
+        display: grid;
+
+        img{
+            width: 50px;
+        }
+        p{
+            font-size: 11px;
+        }
+
+    }
 `
 const ItemData = styled.div`
     display: flex;
     align-items: center;
     column-gap: 20px;
+
+    @media(max-width:767px){
+        column-gap: 5px;
+    
+        p{
+            font-size: 15px;    
+        }
+    }
+
+
 `
 const ItemSubtract = styled.button`
     background-color: #EFF4FF ;
     border: none;
     padding: 5px 11px;
     border-radius: 4px;
+
+    @media(max-width:767px){
+        padding: 1px 7px;
+    }
 `
 const ItemAdd = styled.button`
     background-color: #2563EB ;
     border: none;
     padding: 4px 10px;
     border-radius: 4px;
+    
+    @media(max-width:767px){
+        padding: 1px 7px;
+    }
 `
 const ItemDelete = styled.button`
     margin: 0 0 0 61px;
@@ -82,4 +112,8 @@ const ItemDelete = styled.button`
     width: 34px;
     height: 34px;
     padding: 3px 0 8px;
+
+    @media(max-width:767px){
+        margin: 0 0 0 5px;
+    }
 `
