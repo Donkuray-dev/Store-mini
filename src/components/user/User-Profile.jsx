@@ -1,21 +1,19 @@
 import React from "react";
 import styled from "styled-components";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Cart from '../user/Cart'
-import DummyLogo from "../../assets/img/Dummy-logo.png"
-import DummyProduct1 from "../../assets/img/Dummy-product-1.png"
-import DummyProduct2 from "../../assets/img/Dummy-product-2.png"
-import DummyProduct3 from "../../assets/img/Dummy-product-3.png"
-import DummyProduct4 from "../../assets/img/Dummy-product-4.png"
-import DummyProduct5 from "../../assets/img/Dummy-product-5.png"
-import DummyProduct6 from "../../assets/img/Dummy-product-6.png"
+import "bootstrap/dist/css/bootstrap.min.css";
+import Cart from "../user/Cart";
+import DummyLogo from "../../assets/img/Dummy-logo.png";
+import DummyProduct1 from "../../assets/img/Dummy-product-1.png";
+import DummyProduct2 from "../../assets/img/Dummy-product-2.png";
+import DummyProduct3 from "../../assets/img/Dummy-product-3.png";
+import DummyProduct4 from "../../assets/img/Dummy-product-4.png";
+import DummyProduct5 from "../../assets/img/Dummy-product-5.png";
+import DummyProduct6 from "../../assets/img/Dummy-product-6.png";
 import { useState } from "react";
-import Imgsaved from "../elements/Img-saved"
+import Imgsaved from "../elements/Img-saved";
 
 export default function UserProfile() {
   const [search, setsearch] = useState("");
-
-
 
   const products = [
     {
@@ -207,8 +205,7 @@ export default function UserProfile() {
                 <CardImageSection>
                   <CardImage src={product.image} />
                   <CardLikeBtn>
-
-                   <Imgsaved />
+                    <Imgsaved />
                   </CardLikeBtn>
                 </CardImageSection>
                 <CardDetails>
@@ -238,7 +235,7 @@ const WrapperInner = styled.div`
   background-color: #f5f7f8;
   height: fit-content;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     padding: 0px 11px;
   }
 `;
@@ -247,7 +244,6 @@ const UserInfo = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 `;
 const BaseInfo = styled.div`
   display: flex;
@@ -256,9 +252,9 @@ const BaseInfo = styled.div`
   width: 100%;
   max-width: 375px;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     display: grid;
-    row-gap:15px;
+    row-gap: 15px;
   }
 `;
 const ProfileInfo = styled.div`
@@ -267,7 +263,7 @@ const ProfileInfo = styled.div`
   align-items: center;
   column-gap: 7px;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     display: none;
   }
 `;
@@ -297,7 +293,7 @@ const Search = styled.div`
   display: flex;
   column-gap: 36px;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     column-gap: 0px;
     padding: 0 5px;
   }
@@ -325,17 +321,16 @@ const CardSection = styled.div`
   display: flex;
   flex-wrap: wrap;
 
-   @media (max-width:768px){
+  @media (max-width: 768px) {
     justify-content: center;
     padding: 0px;
   }
-
 `;
 const Card = styled.div`
   width: 100%;
   max-width: 214px;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     max-width: 107px;
   }
 `;
@@ -343,15 +338,15 @@ const CardImageSection = styled.div`
   width: 214px;
   height: 214px;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     width: 107px;
     height: 107px;
   }
 `;
 const CardImage = styled.img`
   position: absolute;
-    
-  @media (max-width:767px){
+
+  @media (max-width: 767px) {
     width: 107px;
     height: 107px;
   }
@@ -372,9 +367,9 @@ const ProductDetail = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media (max-width:767px){
+  @media (max-width: 767px) {
     display: grid;
-  } 
+  }
 `;
 const ProductPriceBtn = styled.button`
   border: none;

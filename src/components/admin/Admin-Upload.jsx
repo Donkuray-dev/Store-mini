@@ -7,6 +7,7 @@ import Input from "../elements/Input";
 import Header from "../elements/Header";
 import { useForm } from "react-hook-form";
 import { useDropzone } from "react-dropzone";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminUpload() {
   const [Img, setImg] = useState(null);
@@ -26,34 +27,32 @@ export default function AdminUpload() {
       const fileWidth = file.width;
       const fileHeight = file.height;
       const ratio = fileWidth / fileHeight;
-
-      if (fileSize > 1024 * 1024) {
-        // 1MB limit
+  
+      if (fileSize > 1024 * 1024) { // 1MB limit
         alert("Image size exceeds 1MB");
         return;
       }
-
-      // if (ratio !== 3) { // 3:1 ratio limit
-      //   alert("Image ratio must be 3:1");
-      //   return;
-      // }
-
-      if (file.type !== "image/png") {
-        // PNG only
+  
+      if (ratio !== 3) { // 3:1 ratio limit
+        alert("Image ratio must be 3:1");
+        return;
+      }
+  
+      if (file.type !== "image/png") { // PNG only
         alert("Only PNG images are allowed");
         return;
       }
-
+  
       setImg({ preview: URL.createObjectURL(file), file });
     }
   }, []);
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
-    accept: "image/png",
+    accept: "image/*",
     multiple: false,
   });
 
+  const Navigate = useNavigate();
   const onSubmit = (data) => {
     console.log("Form Data: ", data);
     localStorage.setItem("Admin-upload Data", JSON.stringify(data))
@@ -63,10 +62,13 @@ export default function AdminUpload() {
     }
    
     console.log("Uploaded Logo: ", Img.file);
-    window.location.href = "/Admin-Shop-Type";
+    Navigate("/Admin-Shop-Type");
   };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> e4bcf8eab765ed146dfcca86cf9042563573c5f0
   return (
     <Wrapper>
       <Header />
@@ -82,11 +84,7 @@ export default function AdminUpload() {
               ) : (
                 <div>
                   {Img ? (
-                    <img
-                      src={Img.preview}
-                      alt="Brand Logo Preview"
-                      style={{ width: "150px", height: "50px" }}
-                    />
+                    <PreviewImage src={Img.preview} alt="Brand Logo Preview" />
                   ) : (
                     <div>
                       <svg
@@ -137,12 +135,9 @@ export default function AdminUpload() {
                 error={errors.Location}
               />
               <BtnSection>
-                <a href="/Admin-Contect">
-                  <Btn title="Back" />
-                </a>
-                <a href="">
-                  <Btn title="Next" />
-                </a>
+                <Btn title="Back" type="button" onClick={handaleBack} />
+
+                <Btn title="Next" type="submit" />
               </BtnSection>
             </form>
           </WrapperInner>
@@ -162,26 +157,43 @@ const WrapperInner = styled.div`
   border-radius: 8px;
   box-shadow: 0px 0px 2px gray;
 `;
+
 const UploadSection = styled.div`
   text-align: center;
   border: 2px dashed #2563eb;
   border-radius: 8px;
-  padding: 37px 0;
+  height: 9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+width: 100%;
 `;
+
 const UploadTitle = styled.h3`
   font-size: 18px;
 `;
+
 const UploadLimts = styled.p`
   font-size: 12px;
   color: #1f2937cc;
 `;
+
 const UploadWarning = styled.p`
   font-size: 12px;
   color: #ff0c0c;
   font-weight: 500;
   font-family: "Space Grotesk", sans-serif;
 `;
+
 const BtnSection = styled.div`
   display: flex;
   gap: 20px;
+`;
+
+// Updated styles for the image preview
+const PreviewImage = styled.img`
+  width: 100%;
+  height: 9rem;
+  object-fit: contain;
+  border-radius: 8px;
 `;
