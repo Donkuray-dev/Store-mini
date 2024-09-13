@@ -18,6 +18,7 @@ export default function AdminLogin() {
 
   const onSubmit = (data) => {
     console.log(data);
+    localStorage.setItem("Admin-login Data" ,JSON.stringify(data))
     window.location.href = "/Admin-Contect";
   };
 

@@ -3,30 +3,32 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Stepper from "../elements/Stepper";
 import Btn from "../elements/Btn";
 import Input from "../elements/Input";
-import React from "react";
+import React, { useState } from "react";
 import Header from "../elements/Header";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { number } from "yup";
 
 export default function AdminLogin() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm();
 
   const navigate = useNavigate();
+
   // Function to handle form submission
   const onSubmit = (data) => {
     console.log(data);
-    // Redirect to Admin-Upload if the form is valid
+    localStorage.setItem("Admin-contact Data", JSON.stringify(data));
     navigate("/Admin-Upload");
   };
 
   // Function to handle back navigation
   const handleBack = (data) => {
-    console.log(data);
-    navigate("/Admin-Login");
+    navigate("/Admin-Login"); 
   };
 
   return (
@@ -34,7 +36,7 @@ export default function AdminLogin() {
       <Header />
       <div className="container">
         <div className="user_login">
-          <Stepper index={1}/>
+          <Stepper index={1} />
 
           <WrapperInner onSubmit={handleSubmit(onSubmit)}>
             <h2 className="text-center">User Information</h2>

@@ -26,27 +26,26 @@ export default function AdminUpload() {
       const fileWidth = file.width;
       const fileHeight = file.height;
       const ratio = fileWidth / fileHeight;
-  
-      if (fileSize > 1024 * 1024) { // 1MB limit
+
+      if (fileSize > 1024 * 1024) {
+        // 1MB limit
         alert("Image size exceeds 1MB");
         return;
       }
-  
-      if (ratio !== 3) { // 3:1 ratio limit
-        alert("Image ratio must be 3:1");
-        return;
-      }
-  
-      if (file.type !== "image/png") { // PNG only
+
+      // if (ratio !== 3) { // 3:1 ratio limit
+      //   alert("Image ratio must be 3:1");
+      //   return;
+      // }
+
+      if (file.type !== "image/png") {
+        // PNG only
         alert("Only PNG images are allowed");
         return;
       }
-  
+
       setImg({ preview: URL.createObjectURL(file), file });
     }
-  
-
-
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -56,21 +55,32 @@ export default function AdminUpload() {
   });
 
   const onSubmit = (data) => {
+    console.log("Form Data: ", data);
+    localStorage.setItem("Admin-upload Data", JSON.stringify(data))
     if (!Img) {
       alert("Please upload a brand logo.");
+   
       return;
     }
-    console.log("Form Data: ", data);
+   
     console.log("Uploaded Logo: ", Img.file);
     window.location.href = "/Admin-Shop-Type";
   };
+
+  //  to retrieve the stored data
+  const storedData = localStorage.getItem("Admin-upload Data");
+  if (storedData) {
+    const parsedData = JSON.parse(storedData);
+    // Use the parsed data here
+    console.log("Stored Data: ", parsedData);
+  }
 
   return (
     <Wrapper>
       <Header />
       <div className="container">
         <div className="user_login">
-          <Stepper index={2}/>
+          <Stepper index={2} />
           <WrapperInner>
             <h2 className="text-center">Your Brand Information</h2>
             <UploadSection {...getRootProps()}>
