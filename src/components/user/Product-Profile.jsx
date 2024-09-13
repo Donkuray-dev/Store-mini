@@ -29,7 +29,7 @@ export default function ProductProfile() {
                             <img src={ProductOtherImg4} />
                         </ProductOtherImgs>
                         <ProductImg>
-                            <img src={ProductMainImg} />
+                            <img src={ProductMainImg}/>
                         </ProductImg>
                         <ProductDetails>
                             <ProductTitle className="font">
@@ -148,8 +148,17 @@ const WrapperInner = styled.div`
 const Title = styled.div`
     display: flex;
     align-items: center;
-    column-gap: 319px;
     padding: 42px 0 0 ;
+    
+    p{
+        margin: 0 auto;
+    }
+
+
+
+    @media (max-width:767px){
+        padding: 21px 0 0 ;
+    }
 `
 const Product = styled.div`
     margin: 38px 0 0 0;
@@ -160,24 +169,65 @@ const Product = styled.div`
     @media (max-width: 1023px){
         align-items: start;
     }
+    
+    @media (max-width:767px){
+        display: grid;
+        justify-content: center;
+        grid-gap: 15px;
+        grid-template-areas:
+            "a"
+            "b" 
+            "c"
+        ;
+    }
 `
 const ProductOtherImgs = styled.div`
     display: grid;
     row-gap: 30px;
     padding: 15px 0;
+
+    @media (max-width:767px){
+        grid-area: b;
+        display: flex;
+        column-gap: 5px; 
+        padding: 0;
+    }
 `
 const ProductImg = styled.div`
     margin: 0 30px 0 17px;
+
+    @media (max-width:767px){
+        margin: 0px;
+    }
+
+    img{
+        @media (max-width:767px){
+            width: 274px;
+            text-align: center;
+        }
+    }
 `
 const ProductDetails = styled.div`
-
+     @media (max-width: 767px){  
+        grid-area: c;
+        width: 274px; 
+    }
+    
+    p{
+        @media(max-width:767px){
+            font-size: 11px;
+        }
+    }
 `
 const ProductTitle = styled.p`
-    font-size: 27px;
     font-size: 24px;
     font-weight: 600;
     margin: 0;
     line-height: 30px; 
+
+    @media (max-width:767px){
+        font-size: 18px !important;
+    }
 `
 const ProductPriceing = styled.div`
     margin: 20px 0 0 0;
@@ -210,6 +260,9 @@ const LikeBtn = styled.button`
 const AboutProduct = styled.div`
     margin: 14px 0 0 0;
 `
+
+
+
 const SimilerProduct = styled.div`
     margin: 51px 0 0 0;
 `
@@ -218,17 +271,36 @@ const SimilerProductList = styled.div`
     display: flex;
     justify-content: space-between;
     padding: 0 24px;
+
+    @media (max-width:767px){
+        flex-wrap: wrap;
+        padding: 0; 
+        row-gap: 20px;
+    }
 `
 const Card = styled.div`
     width: 100%;
     max-width: 214px;
+
+    @media(max-width:767px){
+        max-width: 107px;
+    }
 `
 const CardImageSection = styled.div`
     width: 214px;
     height: 214px;
+    
+    @media(max-width:767px){
+        width: 107px;
+        height: 107px;
+    }
 `
 const CardImage = styled.img`
     position: absolute;
+     @media(max-width:767px){
+        width: 107px;
+        height: 107px;
+    }
 `
 const CardLikeBtn = styled.button`
     position: relative;
@@ -241,11 +313,27 @@ const CardLikeBtn = styled.button`
     background: none;
 `
 const CardDetails = styled.div`
+
+    p{
+        @media(max-width:767px){
+            font-size: 8px;
+        }
+    }
 `
 const ProductDetail = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    @media(max-width:767px){
+        display: grid;
+    }
+
+    p{
+        @media(max-width:767px){
+            font-size: 15px;
+        }
+    }
 `
 const ProductPriceBtn = styled.button`
     padding: 9px 16px;
@@ -253,4 +341,10 @@ const ProductPriceBtn = styled.button`
     color: #fff;
     border: none;
     border-radius: 50px;
+
+    @media(max-width:767px){
+        padding: 4px 11px;
+        font-size: 14px;
+    }
 `   
+
