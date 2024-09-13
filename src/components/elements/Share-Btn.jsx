@@ -40,4 +40,5 @@ const InputContent = styled.div`
 `
 const InputLink = styled.p`
     margin: 0;
+    overflow: hidden;
 `
