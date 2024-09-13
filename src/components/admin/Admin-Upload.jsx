@@ -59,7 +59,6 @@ export default function AdminUpload() {
     localStorage.setItem("Admin-upload Data", JSON.stringify(data))
     if (!Img) {
       alert("Please upload a brand logo.");
-   
       return;
     }
    
@@ -67,13 +66,6 @@ export default function AdminUpload() {
     window.location.href = "/Admin-Shop-Type";
   };
 
-  //  to retrieve the stored data
-  const storedData = localStorage.getItem("Admin-upload Data");
-  if (storedData) {
-    const parsedData = JSON.parse(storedData);
-    // Use the parsed data here
-    console.log("Stored Data: ", parsedData);
-  }
 
   return (
     <Wrapper>

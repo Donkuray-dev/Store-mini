@@ -10,6 +10,11 @@ import Header from "../elements/Header";
 
 
 export default function  AdminShopType() {
+
+    const onSubmit = (data)=>{
+console.log(data)
+localStorage.setItem("Admin-shop type", JSON.stringify(data))
+    }
     return(
         <Wrapper>
             <Header/>
@@ -31,7 +36,7 @@ export default function  AdminShopType() {
                             <CheckBox title={"B2B webiste"} type={"checkbox"}/>
                             <CheckBox title={"Reseller website"} type={"checkbox"}/>
                         </CheckBoxList>
-                        <Btn title="Submit"/>
+                        <Btn title="Submit" />
                     </WrapperInner>
                 </div>
             </div>
