@@ -1,6 +1,7 @@
 body{
   width: 100%;
   height: 100%;
+  margin: 0;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -91,4 +92,12 @@ a{
 .big{
   font-size: 17px;
   line-height: 21px;
+  
+}
+
+@media (max-width: 768px) {
+  .container{
+    min-width: 100% !important;
+  }
+  
 }

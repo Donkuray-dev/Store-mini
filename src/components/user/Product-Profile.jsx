@@ -77,7 +77,7 @@ export default function ProductProfile() {
                                 <CardDetails>
                                     <p className="font p m-1 fw-semibold">Pink Champagne Marke <br /> line Soon</p>
                                     <ProductDetail>
-                                        <p className="font fw-bold">₹5000/-</p>
+                                        <p className="font fw-bold m-0">₹5000/-</p>
                                         <ProductPriceBtn className="font">
                                             Add To Cart
                                         </ProductPriceBtn>
@@ -96,7 +96,7 @@ export default function ProductProfile() {
                                 <CardDetails>
                                     <p className="font p m-1 fw-semibold">Pink Champagne Marke <br /> line Soon</p>
                                     <ProductDetail>
-                                        <p className="font fw-bold">₹5000/-</p>
+                                        <p className="font fw-bold m-0">₹5000/-</p>
                                         <ProductPriceBtn className="font">
                                             Add To Cart
                                         </ProductPriceBtn>
@@ -115,7 +115,7 @@ export default function ProductProfile() {
                                 <CardDetails>
                                     <p className="font p m-1 fw-semibold">Pink Champagne Marke <br /> line Soon</p>
                                     <ProductDetail>
-                                        <p className="font fw-bold">₹5000/-</p>
+                                        <p className="font fw-bold m-0">₹5000/-</p>
                                         <ProductPriceBtn className="font">
                                             Add To Cart
                                         </ProductPriceBtn>
@@ -139,7 +139,11 @@ const WrapperInner = styled.div`
     max-width: 893px;
     margin: 0 auto;
     background-color: #F5F7F8;
-    height: 100vh;
+    height: fit-content;
+
+    @media (max-width: 1023px){
+        padding: 0px 11px;
+    }
 `
 const Title = styled.div`
     display: flex;
@@ -152,6 +156,10 @@ const Product = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 1023px){
+        align-items: start;
+    }
 `
 const ProductOtherImgs = styled.div`
     display: grid;
@@ -240,10 +248,9 @@ const ProductDetail = styled.div`
     align-items: center;
 `
 const ProductPriceBtn = styled.button`
-    border: none;
-    background-color: #000;
+    padding: 9px 16px;
+    background: #000;
     color: #fff;
-    padding: 9px 15px;
+    border: none;
     border-radius: 50px;
-    font-size: 12px;
-`
+`   
