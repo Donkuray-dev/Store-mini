@@ -10,17 +10,20 @@ import DummyProduct5 from "../../assets/img/Dummy-product-5.png";
 import DummyProduct6 from "../../assets/img/Dummy-product-6.png";
 import { useState } from "react";
 import Imgsaved from "../elements/Img-saved";
-import {  useCart } from "react-use-cart"
+import { useCart } from "react-use-cart";
 import { useNavigate } from "react-router-dom";
 
 export default function UserProfile() {
   const [search, setsearch] = useState("");
-  const  {addItem} = useCart()
-  const Navigate = useNavigate()
 
-  const handleRoot = ()=>{
-      Navigate("/Cart")
-  }
+  const Navigate = useNavigate();
+
+  const handleRoot = () => {
+    Navigate("/Cart");
+  };
+
+  const { totalUniqueItems, isEmpty, addItem } = useCart();
+
   const products = [
     {
       id: 1,
@@ -123,6 +126,9 @@ export default function UserProfile() {
                   <circle cx="17.5" cy="20" r="1.5" fill="white" />
                 </svg>
                 cart
+                <supButton className="fs-6">
+                  {totalUniqueItems ? totalUniqueItems : isEmpty}
+                </supButton>
               </CartBtn>
             </ProfileInfo>
           </UserInfo>
@@ -218,7 +224,10 @@ export default function UserProfile() {
                   <p className="font p m-1 fw-semibold">{product.name}</p>
                   <ProductDetail>
                     <p className="font fw-bold">₹{product.price}</p>
-                    <ProductPriceBtn className="font" onClick={()=>addItem(product)}>
+                    <ProductPriceBtn
+                      className="font"
+                      onClick={() => addItem(product)}
+                    >
                       Add To Cart
                     </ProductPriceBtn>
                   </ProductDetail>
@@ -385,3 +394,5 @@ const ProductPriceBtn = styled.button`
   border-radius: 50px;
   font-size: 12px;
 `;
+
+const supButton = styled.sup``;
