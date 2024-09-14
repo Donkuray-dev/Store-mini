@@ -38,7 +38,7 @@ export default function AdminUpload() {
         return;
       }
   
-      if (file.type !== "image/png") { // PNG only
+      if (file.type == "image/png") { // PNG only
         alert("Only PNG images are allowed");
         return;
       }
