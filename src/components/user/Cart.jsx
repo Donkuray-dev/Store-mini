@@ -37,18 +37,7 @@ export default function AdminProfile() {
                                )) }
 
                                
-                            {/* <CartItem img={CartItem1} ItemName={"Pink Champagne Markess line Soon"} />
-                            <CartItem img={CartItem2} ItemName={"Omega Men’s Watch"} />
-                            <CartItem img={CartItem3} ItemName={"Jaksan movie outfit"} />
-<<<<<<< HEAD
-                            <CartItem img={CartItem4} ItemName={"Pink Champagne Markess line Soon"} /> */}
-=======
-                            <CartItem img={CartItem4} ItemName={"Pink Champagne Markess line Soon"} />
-                            <CartItem img={CartItem1} ItemName={"Pink Champagne Markess line Soon"} />
-                            <CartItem img={CartItem2} ItemName={"Omega Men’s Watch"} />
-                            <CartItem img={CartItem3} ItemName={"Jaksan movie outfit"} />
-                            <CartItem img={CartItem4} ItemName={"Pink Champagne Markess line Soon"} />
->>>>>>> b518fa2fffa0fb3eec400c12da3ecf57daa0ac55
+                      
                         </CartList>
                         <WhatsappBtn>
                             Continue to 
