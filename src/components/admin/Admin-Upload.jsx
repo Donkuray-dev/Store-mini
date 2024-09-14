@@ -33,12 +33,12 @@ export default function AdminUpload() {
         return;
       }
   
-      if (ratio !== 3) { // 3:1 ratio limit
+      if (ratio == 3) { // 3:1 ratio limit
         alert("Image ratio must be 3:1");
         return;
       }
   
-      if (file.type == "image/png") { // PNG only
+      if (file.type !== "image/png") { // PNG only
         alert("Only PNG images are allowed");
         return;
       }
