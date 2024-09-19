@@ -6,7 +6,7 @@ import { useCart } from "react-use-cart";
 
 export default function CartItem({img,ItemName, item}) {
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     
     const {
         updateItemQuantity,
